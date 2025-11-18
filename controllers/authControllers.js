@@ -18,7 +18,7 @@ const register = async (req, res) => {
   if (!email || !password) {
     res
       .status(400)
-      .json({ error: "Email or Password fields cannot be empty!" });
+      .json({ error: "Los campos de correo electrónico o contraseña no pueden estar vacíos!" });
     return;
   }
   const salt = await bcrypt.genSalt(10);
@@ -41,12 +41,12 @@ const register = async (req, res) => {
 
     const userAlreadyExists = await checkRecordExists("users", "email", email);
     if (userAlreadyExists) {
-      res.status(409).json({ error: "Email already exists" });
+      res.status(409).json({ error: "El correo electrónico ya existe" });
     } else {
       await insertRecord("users", user);
       await insertRecord("profiles", profile);
 
-      res.status(201).json({ message: "user created successfully!" });
+      res.status(201).json({ message: "Usuario creada con éxito!" });
     }
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -58,7 +58,7 @@ const login = async (req, res) => {
   if (!email || !password) {
     res
       .status(400)
-      .json({ error: "Email or Password fields cannot be empty!" });
+      .json({ error: "Los campos de correo electrónico o contraseña no pueden estar vacíos!" });
     return;
   }
 
@@ -67,7 +67,7 @@ const login = async (req, res) => {
 
     if (existingUser) {
       if (!existingUser.password) {
-        res.status(401).json({ error: "Invalid credentials" });
+        res.status(401).json({ error: "Datos Invalidos" });
         return;
       }
 
@@ -83,10 +83,10 @@ const login = async (req, res) => {
           access_token: generateAccessToken(existingUser.userId),
         });
       } else {
-        res.status(401).json({ error: "Invalid credentials" });
+        res.status(401).json({ error: "Datos Invalidos"  });
       }
     } else {
-      res.status(401).json({ error: "Invalid credentials" });
+      res.status(401).json({ error: "Datos Invalidos"  });
     }
   } catch (error) {
     res.status(500).json({ error: error.message });
