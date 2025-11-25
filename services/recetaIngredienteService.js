@@ -5,7 +5,7 @@ const {
   getAllRecords,
   updateRecord, 
   deleteRecord 
-} = require("../utils/sqlFunctions");
+} = require("../mockDB");
 
 // -------------------------------
 // VALIDACIONES

@@ -5,7 +5,7 @@ const {
   getRecordById, 
   updateRecord, 
   deleteRecord 
-} = require("../mocks");
+} = require("../mockDB");
 
 // Crear receta (ficha técnica)
 async function crearReceta(data) {

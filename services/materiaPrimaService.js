@@ -5,7 +5,7 @@ const {
   getRecordById, 
   updateRecord, 
   deleteRecord 
-} = require("../utils/sqlFunctions");
+} = require("../mockDB");
 
 // Validación de números no negativos
 function validarNumeroNoNegativo(valor, nombreCampo) {
